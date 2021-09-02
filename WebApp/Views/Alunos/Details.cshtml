@@ -1,0 +1,43 @@
+﻿@model WebApp.Models.Aluno
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Informações do Aluno</h1>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Código do Aluno:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CodAluno)
+        </dd>
+        <dt class="col-sm-2">
+            Nome do Aluno:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NomeAluno)
+        </dd>
+        <dt class="col-sm-2">
+            Data de Nascimento:
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                string dataNascimento = Model.DataNascimento.ToString("dd/MM/yyyy");
+            }
+            @Html.DisplayFor(model => dataNascimento)
+        </dd>
+        <dt class="col-sm-2">
+            Curso:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Curso.NomeCurso)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CodAluno">Editar</a> |
+    <a asp-action="Index">Retornar para Listagem de Alunos</a>
+</div>

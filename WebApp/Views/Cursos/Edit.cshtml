@@ -1,0 +1,37 @@
+﻿@model WebApp.Models.Curso
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Cadastro de Cursos</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CodCurso" />
+            <div class="form-group">
+                <label class="control-label">Código do Curso:</label>
+                <input class="form-control" value="@Model.CodCurso" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeCurso" class="control-label">Nome do Curso:</label>
+                <input asp-for="NomeCurso" class="form-control" />
+                <span asp-validation-for="NomeCurso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<div>
+    <a asp-action="Index">Retornar para Listagem de Cursos</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

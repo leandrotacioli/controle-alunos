@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebApp.Models.Aluno>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cadastro de Alunos</h1>
+
+<p>
+    <a asp-action="Create">Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width: 30% !important;">Nome do Aluno</th>
+            <th style="width: 20% !important;">Data de Nascimento</th>
+            <th style="width: 25% !important;">Curso</th>
+            <th style="width: 25% !important;"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeAluno)
+            </td>
+            <td>
+                @{ 
+                    string dataNascimento = item.DataNascimento.ToString("dd/MM/yyyy");
+                }
+                @Html.DisplayFor(modelItem => dataNascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Curso.NomeCurso)
+            </td>
+            <td style="text-align: right !important;">
+                <a asp-action="Edit" asp-route-id="@item.CodAluno">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.CodAluno">Detalhar</a> |
+                <a asp-action="Delete" asp-route-id="@item.CodAluno">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
